@@ -19,10 +19,11 @@ class Options : Serializable {
             Option(0, "Option 1", R.id.action_mainOptions_to_optionOne),
             Option(1, "Option 2", R.id.action_mainOptions_to_optionTwo),
             Option(2, "Custom Camera", R.id.action_mainOptions_to_camera),
-            Option(3, "OpenCV", R.id.action_mainOptions_to_opencv),
+            Option(3, "OpenCV\nNDK", R.id.action_mainOptions_to_opencv),
             Option(4, "Room DB", R.id.action_mainOptions_to_roomdb),
             Option(5, "API Rest", R.id.action_mainOptions_to_apirest),
-            Option(6, "Dynamic", R.id.action_mainOptions_to_dynamic)
+            Option(6, "Dynamic", R.id.action_mainOptions_to_dynamic),
+            Option(7, "Maps", R.id.action_mainOptions_to_maps)
         )
     }
 

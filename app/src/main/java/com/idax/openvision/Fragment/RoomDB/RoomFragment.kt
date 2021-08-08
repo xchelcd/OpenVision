@@ -9,8 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.Toast
+import android.view.animation.ScaleAnimation
+import androidx.core.os.bundleOf
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.idax.openvision.Adapter.UserAdapter
 import com.idax.openvision.Entity.User
@@ -61,11 +65,19 @@ class RoomFragment : Fragment() {
             adapter = UserAdapter(requireContext(), it) { index ->
                 userPosition = index
                 user = it.get(index)
-                user?.let {
-                    fillData(it)
-                    Toast.makeText(requireContext(), "${it.id}", Toast.LENGTH_SHORT).show()
+                user?.let { user ->
+                    fillData(user)
                 }
-                appbar.setExpanded(true, true)
+                //appbar.setExpanded(true, true)
+
+                //val extra = FragmentNavigatorExtras(
+                //    recyclerView.get(index) to "image_small")
+                val bundle = bundleOf("user" to user)
+                findNavController().navigate(
+                    R.id.action_mainOptions_to_roomInfo,
+                    bundle,)
+                    //null,
+                    //extra)
             }
             recyclerView.layoutManager = LinearLayoutManager(context)
             recyclerView.adapter = adapter

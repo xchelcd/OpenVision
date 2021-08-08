@@ -19,7 +19,7 @@
         <action
             android:id="@+id/action_mainOptions_to_optionTwo"
             app:destination="@id/optionTwoFragment"
-            app:enterAnim="@anim/animation_one"
+            app:enterAnim="@anim/animation_two"
             app:popEnterAnim="@anim/slide" />
         <action
             android:id="@+id/action_mainOptions_to_camera"
@@ -29,7 +29,7 @@
         <action
             android:id="@+id/action_mainOptions_to_opencv"
             app:destination="@+id/opencvFragment"
-            app:enterAnim="@anim/animation_one"
+            app:enterAnim="@anim/animation_three"
             app:popEnterAnim="@anim/slide" />
         <action
             android:id="@+id/action_mainOptions_to_roomdb"
@@ -48,6 +48,11 @@
             app:enterAnim="@anim/animation_one"
             app:popEnterAnim="@anim/slide" />
 
+        <action
+            android:id="@+id/action_mainOptions_to_maps"
+            app:destination="@+id/mapsFragment"
+            app:enterAnim="@anim/animation_three"
+            app:popEnterAnim="@anim/slide" />
     </fragment>
 
     <fragment
@@ -90,7 +95,12 @@
         android:id="@+id/roomFragment"
         android:name="com.idax.openvision.Fragment.RoomDB.RoomFragment"
         android:label="Room DB"
-        tools:layout="@layout/fragment_room" />
+        tools:layout="@layout/fragment_room">
+        <action
+            android:id="@+id/action_mainOptions_to_roomInfo"
+            app:destination="@+id/roomInfoFragment"
+            app:enterAnim="@anim/animation_four" />
+    </fragment>
 
     <fragment
         android:id="@+id/apiRestFragment"
@@ -103,4 +113,16 @@
         android:name="com.idax.openvision.Fragment.Dynamically.DynamicFragment"
         android:label="Dynamic"
         tools:layout="@layout/fragment_dynamic" />
+
+    <fragment
+        android:id="@+id/roomInfoFragment"
+        android:name="com.idax.openvision.Fragment.RoomDB.RoomInfoFragment"
+        android:label="Info"
+        tools:layout="@layout/fragment_room_info" />
+
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.idax.openvision.Fragment.Maps.MapsFragment"
+        android:label="Maps"
+        tools:layout="@layout/fragment_maps" />
 </navigation>

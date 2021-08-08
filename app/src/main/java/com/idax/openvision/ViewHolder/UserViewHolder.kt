@@ -13,6 +13,7 @@ class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private var nameTextView: TextView = itemView.findViewById(R.id.nameTextView)
     private var cardView: CardView = itemView.findViewById(R.id.cardView)
+
     fun bindData(user: User, context: Context) {
         nameTextView.text = user.name
         cardView.setAnimation(AnimationUtils.loadAnimation(context, R.anim.animation_one))

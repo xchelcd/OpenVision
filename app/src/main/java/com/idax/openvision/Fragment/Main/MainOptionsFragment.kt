@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.idax.openvision.Adapter.OptionsAdapter
 import com.idax.openvision.Entity.Option
@@ -122,7 +123,9 @@ class MainOptionsFragment : Fragment() {
             }
 
         }
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        //recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.layoutManager =
+            GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = adapter
     }
 
