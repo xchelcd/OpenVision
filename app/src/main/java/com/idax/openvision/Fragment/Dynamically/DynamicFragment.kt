@@ -1,10 +1,8 @@
 package com.idax.openvision.Fragment.Dynamically
 
 import android.graphics.Color
-import android.icu.lang.UCharacter
 import android.os.Bundle
 import android.text.InputType
-import android.text.TextWatcher
 import android.util.Log
 import android.view.Gravity
 import androidx.fragment.app.Fragment
@@ -41,30 +39,29 @@ class DynamicFragment : Fragment() {
         mainView.addView(createButton())
     }
 
-    private fun createHeader(): LinearLayout {
-        val linearLayout = createLinearLayout()
-        linearLayout.addView(createLabel("Num of square matrix:"))
-        linearLayout.addView(createEditText("#"))
-        return linearLayout
+    private fun createHeader(): LinearLayout = createLinearLayout().apply {
+        addView(createLabel("Num of square matrix:"))
+        addView(createEditText("#"))
     }
 
     private fun createTable(size: Int) {
-        val tableLayout = TableLayout(context)
-        tableLayout.layoutParams = params4()
+        val table = TableLayout(context)
+
+        setupTable(table)
 
         for (i in 1..size) {
             val row = newRow()
             for (j in 1..size) {
-                row.addView(createCell(i, j))
+                //row.addView(createCell(i, j))
             }
-            tableLayout.addView(row)
+            //table.addView(row)
         }
-        addTable(tableLayout)
+        addTable(table)
     }
 
     private val cellList = arrayOf<Array<EditText>>()
     private fun createCell(i: Int, j: Int): EditText {
-        val cell = EditText(context)
+        val cell = EditText(context)//weight = 1
 
         cellList[i][j] = cell
         return cell
@@ -72,6 +69,7 @@ class DynamicFragment : Fragment() {
 
     private fun newRow(): TableRow {
         val row = TableRow(context)
+
         return row
     }
 
@@ -79,70 +77,70 @@ class DynamicFragment : Fragment() {
         mainView.addView(tableLayout)
     }
 
-    private fun createButton(title: String = "Create table"): Button {
-        val button = Button(context)
-        button.layoutParams = params3()
-        button.text = title
-        button.setOnClickListener {
+    private fun createButton(title: String = "Create table"): Button = Button(context).apply {
+        layoutParams = params3()
+        text = title
+        setOnClickListener {
             size?.let { size ->
                 Log.d(TAG, size.toString())
                 createTable(size)
             }
         }
-        return button
     }
 
-    private fun createEditText(hint: String): EditText {
-        val editText = EditText(context)
-        editText.layoutParams = params2()
-        editText.hint = hint
-        editText.setTextColor(Color.BLACK)
-        editText.textAlignment = View.TEXT_ALIGNMENT_CENTER
-        editText.inputType = InputType.TYPE_CLASS_NUMBER
-        editText.addTextChangedListener {
+    private fun createEditText(hintLabel: String): EditText = EditText(context).apply {
+        layoutParams = params2()
+        hint = hintLabel
+        setTextColor(Color.BLACK)
+        textAlignment = View.TEXT_ALIGNMENT_CENTER
+        inputType = InputType.TYPE_CLASS_NUMBER
+        addTextChangedListener {
             //Log.d(TAG, it.toString())
             size = it.toString().toIntOrNull()
         }
-        return editText
     }
 
-    private fun createLabel(text: String): TextView {
-        val label = TextView(context)
-        label.text = text
-        label.setTextColor(Color.BLACK)
-        label.textAlignment = View.TEXT_ALIGNMENT_CENTER
-        return label
+    private fun createLabel(title: String): TextView = TextView(context).apply {
+        text = title
+        setTextColor(Color.BLACK)
+        textAlignment = View.TEXT_ALIGNMENT_CENTER
     }
 
-    private fun createLinearLayout(): LinearLayout {
-        val layout = LinearLayout(context)
-        layout.layoutParams = params1()
-        layout.orientation = LinearLayout.HORIZONTAL
-        layout.gravity = Gravity.CENTER
-        return layout
+    private fun createLinearLayout(): LinearLayout = LinearLayout(context).apply {
+        layoutParams = params1()
+        orientation = LinearLayout.HORIZONTAL
+        gravity = Gravity.CENTER
     }
 
-    private fun params1(): LinearLayout.LayoutParams {
-        val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT)
-        params.gravity = Gravity.CENTER
-        return params
+    private fun setupTable(table: TableLayout) {
+        val padding = 35
+        val margin = 35
+        table.layoutParams = params4(margin)
+        table.setBackgroundColor(resources.getColor(R.color.purple_500, resources.newTheme()))
+        table.setPadding(padding, padding, padding, padding)
     }
 
-    private fun params2(): LinearLayout.LayoutParams {
-        val params = LinearLayout.LayoutParams(100, LinearLayout.LayoutParams.WRAP_CONTENT)
-        params.gravity = Gravity.CENTER
-        return params
+    private fun params1(): LinearLayout.LayoutParams = LinearLayout.LayoutParams(
+        LinearLayout.LayoutParams.MATCH_PARENT,
+        LinearLayout.LayoutParams.WRAP_CONTENT).apply {
+        gravity = Gravity.CENTER
     }
 
-    private fun params3(): LinearLayout.LayoutParams {
-        val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT)
-        params.gravity = Gravity.CENTER
-        return params
+
+    private fun params2(): LinearLayout.LayoutParams = LinearLayout.LayoutParams(
+        100, LinearLayout.LayoutParams.WRAP_CONTENT).apply {
+        gravity = Gravity.CENTER
     }
 
-    private fun params4(): LinearLayout.LayoutParams =
-        LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-            LinearLayout.LayoutParams.MATCH_PARENT)
+    private fun params3(): LinearLayout.LayoutParams = LinearLayout.LayoutParams(
+        LinearLayout.LayoutParams.WRAP_CONTENT,
+        LinearLayout.LayoutParams.WRAP_CONTENT).apply {
+        gravity = Gravity.CENTER
+    }
+
+    private fun params4(margin: Int): LinearLayout.LayoutParams = LinearLayout.LayoutParams(
+        LinearLayout.LayoutParams.MATCH_PARENT,
+        LinearLayout.LayoutParams.MATCH_PARENT).apply {
+        setMargins(margin, margin, margin, margin)
+    }
 }
