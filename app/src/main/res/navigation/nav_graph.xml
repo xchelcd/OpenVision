@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainOptionsFragment">
+
+
+    <fragment
+        android:id="@+id/mainOptionsFragment"
+        android:name="com.idax.openvision.Fragment.Main.MainOptionsFragment"
+        android:label="Open Vision"
+        tools:layout="@layout/fragment_main_options">
+        <action
+            android:id="@+id/action_mainOptions_to_optionOne"
+            app:destination="@id/optionOneFragment"
+            app:enterAnim="@anim/animation_one"
+            app:popEnterAnim="@anim/slide" />
+        <action
+            android:id="@+id/action_mainOptions_to_optionTwo"
+            app:destination="@id/optionTwoFragment"
+            app:enterAnim="@anim/animation_one"
+            app:popEnterAnim="@anim/slide" />
+        <action
+            android:id="@+id/action_mainOptions_to_camera"
+            app:destination="@+id/cameraFragment"
+            app:enterAnim="@anim/animation_one"
+            app:popEnterAnim="@anim/slide" />
+        <action
+            android:id="@+id/action_mainOptions_to_opencv"
+            app:destination="@+id/opencvFragment"
+            app:enterAnim="@anim/animation_one"
+            app:popEnterAnim="@anim/slide" />
+        <action
+            android:id="@+id/action_mainOptions_to_roomdb"
+            app:destination="@+id/roomFragment"
+            app:enterAnim="@anim/animation_one"
+            app:popEnterAnim="@anim/slide" />
+        <action
+            android:id="@+id/action_mainOptions_to_apirest"
+            app:destination="@+id/apiRestFragment"
+            app:enterAnim="@anim/animation_one"
+            app:popEnterAnim="@anim/slide" />
+
+        <action
+            android:id="@+id/action_mainOptions_to_dynamic"
+            app:destination="@+id/dynamicFragment"
+            app:enterAnim="@anim/animation_one"
+            app:popEnterAnim="@anim/slide" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/optionOneFragment"
+        android:name="com.idax.openvision.Fragment.Option1.OptionOne"
+        android:label="Option 1"
+        tools:layout="@layout/fragment_option_one">
+        <!--<action
+            android:id="@+id/action_optionTwo_to_mainOptions"
+            app:destination="@id/mainOptionsFragment" />-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/optionTwoFragment"
+        android:name="com.idax.openvision.Fragment.Option2.OptionTwo"
+        android:label="Option 2"
+        tools:layout="@layout/fragment_option_two">
+        <!--<action
+            android:id="@+id/action_optionTwo_to_mainOptions"
+            app:destination="@id/mainOptionsFragment" />-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="com.idax.openvision.Fragment.OptionCamera.CameraFragment"
+        android:label="CameraX"
+        tools:layout="@layout/fragment_camera">
+        <!--<action
+            android:id="@+id/action_camera_to_mainOptions"
+            app:destination="@id/mainOptionsFragment"/>-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/opencvFragment"
+        android:name="com.idax.openvision.Fragment.OptionOpenCV.OpencvFragment"
+        android:label="OpenCV"
+        tools:layout="@layout/fragment_opencv" />
+
+    <fragment
+        android:id="@+id/roomFragment"
+        android:name="com.idax.openvision.Fragment.RoomDB.RoomFragment"
+        android:label="Room DB"
+        tools:layout="@layout/fragment_room" />
+
+    <fragment
+        android:id="@+id/apiRestFragment"
+        android:name="com.idax.openvision.Fragment.RestAPI.APIRestFragment"
+        android:label="API Rest"
+        tools:layout="@layout/fragment_api_rest" />
+
+    <fragment
+        android:id="@+id/dynamicFragment"
+        android:name="com.idax.openvision.Fragment.Dynamically.DynamicFragment"
+        android:label="Dynamic"
+        tools:layout="@layout/fragment_dynamic" />
+</navigation>

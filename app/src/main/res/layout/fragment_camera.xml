@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_1"
+    tools:context=".Fragment.OptionCamera.CameraFragment">
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/viewFinder"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="500dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:letterSpacing="0.1"
+        android:padding="10dp"
+        android:text="Camera"
+        android:textAlignment="center"
+        android:textColor="@color/purple_200"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/takePhotoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:layout_margin="10dp"
+        android:background="@drawable/custom_button_1"
+        android:fontFamily="cursive"
+        android:letterSpacing="0.1"
+        android:padding="10dp"
+        android:text="Photo"
+        android:textAlignment="center"
+        android:textColor="@color/white_1"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="7dp"
+        android:id="@+id/imageViewCam"
+        android:background="@drawable/custom_button_1"
+        android:layout_height="100dp"/>
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_gravity="start|bottom"
+        android:layout_margin="7dp"
+        android:id="@+id/imageViewCV"
+        android:background="@drawable/custom_button_1"
+        android:layout_height="100dp"/>
+
+
+</FrameLayout>
