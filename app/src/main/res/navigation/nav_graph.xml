@@ -124,5 +124,9 @@
         android:id="@+id/mapsFragment"
         android:name="com.idax.openvision.Fragment.Maps.MapsFragment"
         android:label="Maps"
-        tools:layout="@layout/fragment_maps" />
+        tools:layout="@layout/fragment_maps"/>
 </navigation>
+<!--
+android:name="com.google.android.gms.maps.SupportMapFragment"
+android:name="com.idax.openvision.Fragment.Maps.MapsFragment"
+-->

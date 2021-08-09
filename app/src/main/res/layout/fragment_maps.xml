@@ -1,10 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white_2"
+    android:orientation="vertical"
     tools:context=".Fragment.Maps.MapsFragment">
+<!--
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:text="Maps"
+        android:textColor="@color/purple_500_100"
+        android:textColorLink="@color/black"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
+    <com.idax.openvision.Extra.CustomLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_200"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:ratio="0.5">
+
+    </com.idax.openvision.Extra.CustomLinearLayout>
+-->
+    <fragment
+        android:id="@+id/googleMap"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
-</FrameLayout>
+</LinearLayout>

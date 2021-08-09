@@ -2,6 +2,7 @@ package com.idax.openvision.Fragment.Main
 
 import android.Manifest
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.idax.openvision.Adapter.OptionsAdapter
+import com.idax.openvision.BuildConfig
 import com.idax.openvision.Entity.Option
 import com.idax.openvision.Entity.Options
 import com.idax.openvision.Entity.User
@@ -33,6 +35,8 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class MainOptionsFragment : Fragment() {
+
+    private val TAG = "OpenVisionMainOptionsFragment"
 
     private lateinit var binding: FragmentMainOptionsBinding
 

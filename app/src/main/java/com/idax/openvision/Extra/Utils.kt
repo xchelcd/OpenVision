@@ -7,6 +7,19 @@ import java.io.FileOutputStream
 
 class Utils {
 
+    companion object {
+        fun getMeasure(widht: Int, height: Int, ratio: Float): Pair<Int, Int> {
+            var w = widht
+            var h = height
+            if (w == 0 && h == 0) return Pair(0, 0)
+
+            if (w > 0) h = (w * ratio).toInt()
+            else if (h > 0) w = (h / ratio).toInt()
+
+            return Pair(w, h)
+        }
+    }
+
     /*
     public static Bitmap resizeBitmap(String photoPath, int targetW, int targetH) {
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
