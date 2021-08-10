@@ -1,8 +1,11 @@
-package com.idax.openvision.Extra
+package com.idax.openvision.Extra.CustomView
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
+import android.view.View
 import androidx.appcompat.widget.LinearLayoutCompat
+import com.idax.openvision.Extra.Utils
 import com.idax.openvision.R
 
 class CustomLinearLayout @JvmOverloads constructor(
@@ -19,9 +22,7 @@ class CustomLinearLayout @JvmOverloads constructor(
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-
         val (w, h) = Utils.getMeasure(measuredWidth, measuredHeight, ratio)
-
         setMeasuredDimension(w, h)
     }
 }

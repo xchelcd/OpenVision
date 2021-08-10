@@ -85,8 +85,6 @@ class MainOptionsFragment : Fragment() {
         val optionsList: List<Option> = Options().getData()
 
         val adapter = OptionsAdapter(requireContext(), optionsList) { position ->
-            //Toast.makeText(context, "${optionsList[position]}", Toast.LENGTH_SHORT)
-            //    .show()
             val fragmentId = if (optionsList.get(position).fragmentId != -1)
                 optionsList[position].fragmentId
             else null
