@@ -1,6 +1,8 @@
 package com.idax.openvision.Fragment.Dynamically
 
+import android.annotation.SuppressLint
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
@@ -10,12 +12,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.view.marginTop
 import androidx.core.widget.addTextChangedListener
-import com.idax.openvision.Extra.CustomView.CustomCell
 import com.idax.openvision.R
 import com.idax.openvision.databinding.FragmentDynamicBinding
 import kotlinx.android.synthetic.main.fragment_dynamic.*
+import android.widget.TableLayout
+import androidx.core.widget.doOnTextChanged
 
 
 class DynamicFragment : Fragment() {
@@ -37,7 +39,9 @@ class DynamicFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mainView.addView(createLabel("SOLVE SQUARE MATRIX BY GAUSS JORDAN", true))
         mainView.addView(createHeader())
+        mainView.addView(createLabel("At this moment REQUIRE FILL ALL CELLS"))
         mainView.addView(createButton())
     }
 
@@ -62,23 +66,58 @@ class DynamicFragment : Fragment() {
     }
 
     /**
+     * DEPRECAATED
      * onTextHasChanged -> CustomCell
      */
-    private fun createCell(tableRow: TableRow): CustomCell =
-        CustomCell(requireContext(), viewGroup = tableRow) { text, editText ->
-            //CustomCellChangeListener
-            //Log.d(TAG, "$text->${v.text}")
-            //Log.d(TAG, "createCell -> ${cellList[0].editText.text}")
-        }
+    //private fun createCell(indexTag: Int): CustomCell =
+    //    CustomCell(requireContext(), tag = indexTag) { text, editText ->
+    //        //CustomCellChangeListener
+    //        //Log.d(TAG, "${editText.text} -> $text")
+    //        Log.d(TAG, "createCell ID -> ${editText.id}")
+    //        Log.d(TAG, "createCell TAG -> $indexTag")
+    //        //Log.d(TAG, "createCell -> ${cellList[0].editText.text}")
+    //    }
 
-    private val cellList: MutableList<CustomCell> = ArrayList()
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private fun createCell(indexTag: Int): EditText = EditText(context).apply {
+        layoutParams = TableRow.LayoutParams(0,
+            TableRow.LayoutParams.MATCH_PARENT, 1f).apply {
+            val margin = 15
+            setMargins(margin, margin, margin, margin)
+            gravity = Gravity.CENTER
+            ////<item name="android:maxLength">2</item>
+        }
+        //typeface = Typeface.ITALIC
+        tag = indexTag
+        textSize = 18f
+        setTextColor(Color.BLACK)
+        gravity = Gravity.CENTER
+        letterSpacing = 0.1f
+        textAlignment = View.TEXT_ALIGNMENT_CENTER
+        val padding = 10
+        setPadding(padding, padding, padding, padding)
+        background = resources.getDrawable(R.drawable.custom_cell, context.theme)
+        inputType = InputType.TYPE_CLASS_NUMBER
+        doOnTextChanged { text, start, before, count ->
+            Log.d(TAG, "createCell ->\nID: ${this.id}\nTAG:${this.tag}\nstr: $text")
+        }
+    }
+
+    //private val cellList: MutableList<CustomCell> = ArrayList()
+    private val cellList: MutableList<EditText> = ArrayList()
+
     private fun createTable(size: Int) {
         val tableLayout = createTableLayout()
+        var indexTag = 0
         for (i in 1..size) {
             val tableRow = createTableRow()
             for (j in 1..size + 1) {
-                val cell = createCell(tableRow)
+                //val cell = createCell(indexTag)//tableRow as viewGroup
+                //indexTag += 1
+                //cellList.add(cell)
+                val cell = createCell(indexTag)
                 cellList.add(cell)
+                tableRow.addView(cell)
             }
             tableLayout.addView(tableRow)
         }
@@ -87,6 +126,7 @@ class DynamicFragment : Fragment() {
     }
 
     private fun resetMatrix() {
+        ansView.removeAllViews()
         matrixView.removeAllViews()
         matrixHeaderView?.removeAllViews()
     }
@@ -106,9 +146,11 @@ class DynamicFragment : Fragment() {
         var index = 0
         for (i in 0 until size)
             for (j in 0..size) {
-                biArray!![i][j] = "${cellList[index].editText.text}".toFloat()
-                Log.d(TAG, "listToBiArray -> $biArray")
-                index += index
+                //biArray!![i][j] = "${cellList[index].editText.text}".toFloat()
+                Log.d(TAG, "${cellList[index].text}")
+                biArray!![i][j] = "${cellList[index].text}".toFloat()
+                //Log.d(TAG, "listToBiArray -> $biArray")
+                index += 1
             }
     }
 
@@ -149,6 +191,7 @@ class DynamicFragment : Fragment() {
 
     private fun createSolveButton(size: Int): Button = Button(context).apply {
         text = "Solve by Gauss Jordan"
+        Log.d(TAG, "createSolveButton")
         layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
             LinearLayout.LayoutParams.WRAP_CONTENT).apply {
             gravity = Gravity.CENTER
@@ -158,6 +201,7 @@ class DynamicFragment : Fragment() {
         }
         setBackgroundColor(resources.getColor(R.color.purple_500, context.theme))
         setOnClickListener {
+            Log.d(TAG, "Solve!")
             listToBiArray(size)
             GaussJordan(size)
         }
@@ -174,11 +218,15 @@ class DynamicFragment : Fragment() {
         }
     }
 
-    private fun createLabel(title: String): TextView = TextView(context).apply {
-        text = title
-        setTextColor(Color.BLACK)
-        textAlignment = View.TEXT_ALIGNMENT_CENTER
-    }
+    private fun createLabel(title: String, flag: Boolean = false): TextView =
+        TextView(context).apply {
+            text = title
+            if (flag) {
+                typeface = Typeface.DEFAULT_BOLD
+            }
+            setTextColor(Color.BLACK)
+            textAlignment = View.TEXT_ALIGNMENT_CENTER
+        }
 
     private fun createLinearLayout(): LinearLayout = LinearLayout(context).apply {
         layoutParams = params1()
@@ -233,5 +281,14 @@ class DynamicFragment : Fragment() {
             resultadosCadena += (coeficients[i] + "= " + biArray!![i][filas] + "\n");
         }
         Log.d(TAG, "GaussJordan -> $resultadosCadena")
+        ansView.addView(setAnswer(resultadosCadena))
+    }
+
+    private fun setAnswer(ans: String): TextView = TextView(context).apply {
+        layoutParams = params1()
+        text = ans
+        textAlignment = View.TEXT_ALIGNMENT_CENTER
+        setTextColor(Color.BLACK)
+        textSize = 24f
     }
 }
