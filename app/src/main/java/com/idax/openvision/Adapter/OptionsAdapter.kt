@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.idax.openvision.Entity.Option
-import com.idax.openvision.Entity.Options
 import com.idax.openvision.R
 import com.idax.openvision.ViewHolder.OptionsViewHolder
 

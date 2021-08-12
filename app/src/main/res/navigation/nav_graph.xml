@@ -15,11 +15,13 @@
             android:id="@+id/action_mainOptions_to_optionOne"
             app:destination="@id/optionOneFragment"
             app:enterAnim="@anim/animation_one"
+            app:exitAnim="@anim/animation_five"
             app:popEnterAnim="@anim/slide" />
         <action
             android:id="@+id/action_mainOptions_to_optionTwo"
             app:destination="@id/optionTwoFragment"
-            app:enterAnim="@anim/animation_two"
+            app:enterAnim="@anim/animation_one"
+            app:exitAnim="@anim/animation_five"
             app:popEnterAnim="@anim/slide" />
         <action
             android:id="@+id/action_mainOptions_to_camera"

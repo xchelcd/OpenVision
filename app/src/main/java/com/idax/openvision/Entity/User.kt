@@ -1,10 +1,7 @@
 package com.idax.openvision.Entity
 
 import android.os.Parcelable
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.Index
-import androidx.room.PrimaryKey
+import androidx.room.*
 import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
@@ -15,8 +12,11 @@ data class User(
     var name: String,
     @ColumnInfo(name = "last_name") var lastName: String,
     var age: Int,
-    var email: String = "None"
-) : Serializable
+    var email: String = "None",
+
+    ) : Serializable
+
+data class User_(val name: String, val lastName: String, val height: Float) : Serializable
 /*
 @Parcelize
 data class User(

@@ -51,4 +51,18 @@
         <item name="android:padding">10dp</item>
     </style>
 
+    <style name="CustomChip">
+        <item name="fontFamily">cursive</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="chipBackgroundColor">@color/purple_500</item>
+        <item name="chipIcon">@drawable/custom_cell</item>
+        <item name="chipIconTint">@color/rejectedRed</item>
+        <item name="chipStartPadding">10dp</item>
+        <item name="chipStrokeColor">@color/purple_700</item>
+        <item name="chipStrokeWidth">0.3dp</item>
+        <item name="chipSurfaceColor">@color/purple_500</item>
+
+    </style>
 </resources>
