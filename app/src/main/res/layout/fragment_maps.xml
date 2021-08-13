@@ -7,19 +7,20 @@
     android:background="@color/white_2"
     android:orientation="vertical"
     tools:context=".Fragment.Maps.MapsFragment">
-<!--
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="cursive"
-        android:gravity="center"
-        android:text="Maps"
-        android:textColor="@color/purple_500_100"
-        android:textColorLink="@color/black"
-        android:textSize="50sp"
-        android:textStyle="bold" />
-
+    <!--
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:gravity="center"
+            android:text="Maps"
+            android:textColor="@color/purple_500_100"
+            android:textColorLink="@color/black"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+    -->
+    <!--
     <com.idax.openvision.Extra.CustomView.CustomLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,11 +31,169 @@
 
     </com.idax.openvision.Extra.CustomView.CustomLinearLayout>
 -->
+    <!--
+        <Button
+            android:id="@+id/fromButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:padding="5dp"
+            android:text="from"
+            android:textAllCaps="true"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/toButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:padding="5dp"
+            android:text="to"
+            android:textAllCaps="true"
+            android:textColor="@color/black" />
+    -->
+    <EditText
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:hint="Title"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        android:textStyle="italic"
+        tools:text="Enter" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp">
+
+        <TextView
+            android:id="@+id/latTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:gravity="center"
+            android:text="Latitud"
+            android:textColor="@color/purple_500_100"
+            android:textColorLink="@color/black"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/latSlider"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:value="18"
+            android:valueFrom="-100"
+            android:valueTo="100"
+            app:haloColor="@color/purple_500_100"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/latTextView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:thumbColor="@color/purple_500"
+            app:tickColor="@color/purple_200"
+            app:tickColorActive="@color/acceptedGreen"
+            app:trackColor="@color/purple_700" />
+
+        <TextView
+            android:id="@+id/lngTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:gravity="center"
+            android:text="Longitud"
+            android:textColor="@color/purple_500_100"
+            android:textColorLink="@color/black"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/latTextView" />
+
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/lngSlider"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:value="18"
+            android:valueFrom="-200"
+            android:valueTo="200"
+            app:haloColor="@color/purple_500_100"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/lngTextView"
+            app:layout_constraintTop_toBottomOf="@id/latSlider"
+            app:thumbColor="@color/purple_500"
+            app:tickColor="@color/purple_200"
+            app:tickColorActive="@color/acceptedGreen"
+            app:trackColor="@color/purple_700" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/fromRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button_1"
+            android:checked="true"
+            android:text="From"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="italic" />
+
+        <RadioButton
+            android:id="@+id/toRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button_1"
+            android:text="To"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+
+            android:textSize="24sp"
+            android:textStyle="italic" />
+    </RadioGroup>
+
     <fragment
         android:id="@+id/googleMap"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:layout_weight="1"
+        tools:context=".Fragment.Maps.MapsFragment" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/dataTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Hola mundo"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </LinearLayout>
 
 
 </LinearLayout>

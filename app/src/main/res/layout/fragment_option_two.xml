@@ -7,22 +7,33 @@
     android:background="@color/white_2"
     android:orientation="vertical"
     tools:context=".Fragment.Option1.OptionOne">
-
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:chipSpacing="1dp">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/allChip"
-            android:layout_width="wrap_content"
-            android:textIsSelectable="true"
+    <!--
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/CustomChip"
-            android:text="All" />
+            android:layout_margin="10dp"
+            app:chipSpacing="1dp">
 
-    </com.google.android.material.chip.ChipGroup>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/allChip"
+                android:layout_width="wrap_content"
+                android:textIsSelectable="true"
+                android:layout_height="wrap_content"
+                style="@style/CustomChip"
+                android:text="All" />
 
+        </com.google.android.material.chip.ChipGroup>
+    -->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:text="Option 2"
+        android:textColor="@color/purple_500_100"
+        android:textColorLink="@color/black"
+        android:textSize="50sp"
+        android:textStyle="bold" />
 </LinearLayout>
